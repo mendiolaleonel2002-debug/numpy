@@ -1,8 +1,8 @@
 # 🧪 NumPy & Procesamiento de Imágenes en Python
 
-Un espacio dedicado al aprendizaje práctico de **NumPy**, manipulación de arreglos multidimensionales y análisis básico de imágenes utilizando Python y Jupyter Notebooks.
+Un espacio dedicado al aprendizaje práctico de **NumPy**, **Ciencia de Datos**, manipulación de arreglos multidimensionales y análisis de imágenes utilizando Python y Jupyter Notebooks.
 
-Este repositorio contiene libretas interactivas diseñadas para explorar los conceptos fundamentales de la computación científica y el procesamiento de imágenes digitales.
+Este repositorio contiene libretas interactivas diseñadas para explorar desde los fundamentos de arreglos y estadística descriptiva hasta el procesamiento básico de imágenes digitales.
 
 ---
 
@@ -10,18 +10,28 @@ Este repositorio contiene libretas interactivas diseñadas para explorar los con
 
 ```text
 numpy/
-├── 1_numpy_avanzado.ipynb   # NumPy avanzado: arreglos, dimensiones y matrices aleatorias
-├── 2_ejercicios.ipynb       # Análisis de imágenes (beagle.jpg) con Matplotlib
+├── prueba.ipynb             # Introducción a Ciencia de Datos con NumPy (arrays, estadística y ventas)
+├── 1_numpy_avanzado.ipynb   # NumPy avanzado: atributos de arreglos y matrices aleatorias
+├── 2_ejercicios.ipynb       # Análisis completo de imagen (beagle.jpg) con Matplotlib y Pandas
 ├── beagle.jpg               # Imagen de muestra para el análisis visual
-└── .venv/                   # Entorno virtual con las dependencias instaladas
+└── README.md                # Documentación del proyecto
 ```
 
 ---
 
 ## 📓 Descripción de los Notebooks
 
-### 1. 🧮 `1_numpy_avanzado.ipynb` - NumPy Avanzado
-Notebook consolidado que combina la introducción a arreglos de NumPy con la generación y visualización de matrices aleatorias usando Python puro.
+### 1. 🧑‍💻 `prueba.ipynb` - Introducción a Ciencia de Datos con NumPy
+Libreta introductoria enfocada en los fundamentos de NumPy aplicados a operaciones numéricas y análisis básico de datos.
+
+* **Conceptos y ejercicios:**
+  * **Creación de arreglos y matrices:** arreglos 1D y matrices 2D ($3 \times 3$) con `np.array()`.
+  * **Operaciones matemáticas vectorizadas:** suma, resta, multiplicación y división sobre arreglos completos.
+  * **Funciones estadísticas:** cálculo de promedio (`np.mean()`), máximo (`np.max()`), mínimo (`np.min()`), desviación estándar (`np.std()`), mediana (`np.median()`) y suma (`np.sum()`).
+  * **Análisis de ventas:** filtrado booleano de valores (`ventas >= 1000`), cálculo de ventas totales, promedio semanal, venta más alta y suma de ventas de mayor valor.
+
+### 2. 🧮 `1_numpy_avanzado.ipynb` - NumPy Avanzado
+Notebook que combina la inspección de arreglos multidimensionales de NumPy con la generación y visualización de matrices aleatorias usando Python puro.
 
 * **Parte 1 — Arreglos NumPy:**
   * Creación de arreglos multidimensionales con `np.array()` y `dtype='float'`.
@@ -35,13 +45,17 @@ Notebook consolidado que combina la introducción a arreglos de NumPy con la gen
   * Formateo simétrico en consola usando f-strings y `.join()`.
   * Ejemplos con matrices de $5 \times 5$, $10 \times 10$ y $20 \times 20$.
 
-### 2. 🖼️ `2_ejercicios.ipynb` - Análisis de una Imagen
-Procesamiento digital de imágenes: cómo una fotografía se representa como una matriz tridimensional en memoria.
+### 3. 🖼️ `2_ejercicios.ipynb` - Análisis de una Imagen
+Procesamiento digital de imágenes: cómo una fotografía se representa como una matriz tridimensional en memoria y cómo analizar sus canales de color.
 
-* **Conceptos clave:**
-  * Lectura de `beagle.jpg` con `plt.imread()` de Matplotlib.
-  * Análisis de la estructura `(Alto, Ancho, Canales RGB)` mediante `.shape`.
-  * Inspección de valores de píxeles individuales en coordenadas específicas (valores en rango $[0, 255]$).
+* **Conceptos y análisis incluidos:**
+  * Lectura y visualización de `beagle.jpg` con `plt.imread()` y `plt.imshow()`.
+  * Análisis de dimensiones `(Alto, Ancho, Canales RGB)` mediante `.shape` e inspección de píxeles individuales (`img[10, 10]`) y sus componentes Rojo, Verde y Azul.
+  * Estadísticas globales de intensidad: mínimo (`.min()`), máximo (`.max()`), media (`.mean()`) y desviación estándar (`.std()`).
+  * Visualización independiente de los canales **Rojo**, **Verde** y **Azul** con mapas de color (`Reds`, `Greens`, `Blues`) y `plt.colorbar()`.
+  * Cálculo de la intensidad promedio por canal y gráfica de barras comparativa (`plt.bar()`).
+  * Conversión de la matriz 3D a formato tabular mediante `img.reshape(-1, 3)` y creación de un `DataFrame` con **Pandas** (`Rojo`, `Verde`, `Azul`).
+  * Histograma de distribución de frecuencias del canal azul (`plt.hist()`).
 
 ---
 
@@ -49,7 +63,8 @@ Procesamiento digital de imágenes: cómo una fotografía se representa como una
 
 ### Dependencias Principales
 * **NumPy** (`numpy`): cálculo numérico y arreglos multidimensionales.
-* **Matplotlib** (`matplotlib`): lectura, procesamiento y visualización de imágenes.
+* **Pandas** (`pandas`): manejo de datos tabulares (`DataFrame`).
+* **Matplotlib** (`matplotlib`): lectura, análisis visual y graficación de imágenes y datos.
 * **Jupyter** (`notebook` / `jupyterlab`): ejecución de libretas interactivas.
 
 ### Configuración del Entorno
@@ -59,8 +74,10 @@ Procesamiento digital de imágenes: cómo una fotografía se representa como una
    cd numpy
    ```
 
-2. **Activar el entorno virtual (`.venv`):**
+2. **Crear y activar un entorno virtual (`.venv`):**
    ```bash
+   python3 -m venv .venv
+
    # macOS/Linux
    source .venv/bin/activate
 
@@ -68,9 +85,9 @@ Procesamiento digital de imágenes: cómo una fotografía se representa como una
    .venv\Scripts\activate
    ```
 
-3. **Instalar dependencias** (entorno nuevo o limpio):
+3. **Instalar dependencias:**
    ```bash
-   pip install numpy matplotlib notebook
+   pip install numpy pandas matplotlib notebook
    ```
 
 4. **Iniciar Jupyter:**
@@ -82,8 +99,9 @@ Procesamiento digital de imágenes: cómo una fotografía se representa como una
 
 ## 🚀 ¿Cómo empezar?
 
-1. Abre **`1_numpy_avanzado.ipynb`** para aprender las propiedades de los arreglos NumPy y practicar la generación de matrices aleatorias.
-2. Continúa con **`2_ejercicios.ipynb`** para cargar `beagle.jpg` y explorar cómo se representa una imagen como una matriz 3D con canales RGB.
+1. Comienza con **`prueba.ipynb`** si quieres repasar arreglos básicos, operaciones vectorizadas, estadística y filtrado de datos.
+2. Continúa con **`1_numpy_avanzado.ipynb`** para explorar las propiedades de los arreglos NumPy y practicar la generación de matrices aleatorias.
+3. Finaliza con **`2_ejercicios.ipynb`** para cargar `beagle.jpg` y analizar una imagen real a través de sus canales RGB, estadísticas, DataFrames e histogramas.
 
 ---
 > [!NOTE]
